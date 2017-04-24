@@ -1,4 +1,6 @@
-package sk.tomas.sstp;
+package sk.tomas.sstp.main;
+
+import sk.tomas.sstp.gui.ControlPanel;
 
 /**
  * Created by tomas on 4/24/17.
@@ -6,7 +8,8 @@ package sk.tomas.sstp;
 public class Main {
 
     public static void main (String [] args){
-        System.out.println("Hello world");
+        ControlPanel panel = new ControlPanel();
+
     }
 
 }
