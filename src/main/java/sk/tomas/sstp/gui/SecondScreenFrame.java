@@ -1,17 +1,21 @@
 package sk.tomas.sstp.gui;
 
+import sk.tomas.sstp.main.App;
+
 import javax.swing.*;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
-import javax.swing.text.StyledDocument;
 import java.awt.*;
 
 /**
  * Created by Tomas Pachnik on 25-Apr-17.
  */
-public class SecondScreenFrame extends JFrame {
+public class SecondScreenFrame extends JFrame{
 
-    public SecondScreenFrame() {
+    private App app;
+    private JLabel label;
+
+    public SecondScreenFrame(App app) {
+        this.app = app;
+        this.label = new JLabel();
     }
 
     public JFrame showFrame() {
@@ -29,27 +33,22 @@ public class SecondScreenFrame extends JFrame {
         panel.setBackground(Color.BLACK);
         setContentPane(panel);
 
-        JTextPane textPane = new JTextPane();
-
-        //center JTextPane
+        //center JLabel
         panel.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        StyledDocument doc = textPane.getStyledDocument();
-        SimpleAttributeSet center = new SimpleAttributeSet();
-        StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
-        doc.setParagraphAttributes(0, doc.getLength(), center, false);
+        //Font font = new Font(Font.SANS_SERIF, 3, 25);
 
-        Font font = new Font(Font.SANS_SERIF, 3, 25);
-        textPane.setFont(font);
+        label.setText(app.getText());
 
-        textPane.setText("random text");
-
-        panel.add(textPane, gbc);
+        panel.add(label, gbc);
 
         return this;
     }
 
+    public JLabel getLabel() {
+        return label;
+    }
 }

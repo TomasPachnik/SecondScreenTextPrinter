@@ -1,6 +1,10 @@
 package sk.tomas.sstp.gui;
 
+import sk.tomas.sstp.main.App;
+
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
@@ -13,9 +17,11 @@ import java.awt.event.ActionListener;
  */
 public class ControlPanel extends JFrame {
 
+    private App app;
+    private JTextArea area;
 
-    public ControlPanel() {
-
+    public ControlPanel(App app) {
+        this.app = app;
     }
 
     public JFrame showFrame() {
@@ -29,12 +35,13 @@ public class ControlPanel extends JFrame {
 
         panel.setBackground(Color.LIGHT_GRAY);
 
-        JTextArea area = new JTextArea();
+        area = new JTextArea();
         area.setColumns(50);
         area.setRows(20);
 
         area.setWrapStyleWord(true);
         area.setLineWrap(true);
+        area.setText("asdasd");
 
         panel.add(area);
 
@@ -50,13 +57,34 @@ public class ControlPanel extends JFrame {
         Container cp = getContentPane();
         cp.add(panel);
 
+        inicializeListeners();
+
         return this;
     }
 
+    private void inicializeListeners() {
+        if (area != null) {
+            area.getDocument().addDocumentListener(new DocumentListener() {
+                @Override
+                public void insertUpdate(DocumentEvent e) {
+                    updateText(area.getText());
+                }
 
-    private JFrame showSecondFrame() {
-        SecondScreenFrame frame = new SecondScreenFrame();
-        return frame;
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    updateText(area.getText());
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    updateText(area.getText());
+                }
+            });
+        }
+    }
+
+    private void updateText(String text) {
+        app.updateText(text);
     }
 
 }
