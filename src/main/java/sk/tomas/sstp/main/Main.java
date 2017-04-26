@@ -1,6 +1,6 @@
 package sk.tomas.sstp.main;
 
-import sk.tomas.sstp.gui.ControlPanel;
+import javax.swing.*;
 
 /**
  * Created by tomas on 4/24/17.
@@ -8,7 +8,7 @@ import sk.tomas.sstp.gui.ControlPanel;
 public class Main {
 
     public static void main (String [] args){
-        ControlPanel panel = new ControlPanel();
+        SwingUtilities.invokeLater(() -> new App().twoscreen());
 
     }
 
