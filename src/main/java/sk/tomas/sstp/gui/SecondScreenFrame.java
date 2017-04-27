@@ -11,12 +11,12 @@ import java.awt.*;
 public class SecondScreenFrame extends JFrame implements Runnable {
 
     private App app;
-    private JLabel label;
+    private JTextArea jTextArea;
     private Point p;
 
     public SecondScreenFrame(App app, Point p) {
         this.app = app;
-        this.label = new JLabel();
+        this.jTextArea = new JTextArea();
         this.p = p;
     }
 
@@ -42,20 +42,27 @@ public class SecondScreenFrame extends JFrame implements Runnable {
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
         Font font = new Font(Font.SANS_SERIF, Font.BOLD | Font.ITALIC, 65);
-        label.setFont(font);
-        label.setForeground(Color.WHITE);
+        jTextArea.setFont(font);
+        jTextArea.setBackground(Color.BLACK);
+        jTextArea.setForeground(Color.WHITE);
 
-        label.setText(app.getText());
+        jTextArea.setLineWrap(true);
+        jTextArea.setWrapStyleWord(true);
 
-        panel.add(label, gbc);
+        jTextArea.setColumns(20);
+        jTextArea.setRows(5);
+
+        jTextArea.setText(app.getText());
+
+        panel.add(jTextArea, gbc);
 
         setLocation(p);
         pack();
         setVisible(true);
     }
 
-    public JLabel getLabel() {
-        return label;
+    public JTextArea getJTextArea() {
+        return jTextArea;
     }
 
     @Override

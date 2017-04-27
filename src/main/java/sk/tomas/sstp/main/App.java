@@ -57,6 +57,6 @@ public class App {
 
     public void updateText(String text) {
         this.text = text;
-        frame2.getLabel().setText(text);
+        frame2.getJTextArea().setText(text);
     }
 }
