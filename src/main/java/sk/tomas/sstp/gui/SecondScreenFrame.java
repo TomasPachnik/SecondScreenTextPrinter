@@ -20,7 +20,7 @@ public class SecondScreenFrame extends JFrame implements Runnable {
         this.p = p;
     }
 
-    public void showFrame() {
+    private void showFrame() {
         JPanel panel = new JPanel();
 
         //remove entire titlebar
@@ -41,7 +41,9 @@ public class SecondScreenFrame extends JFrame implements Runnable {
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        //Font font = new Font(Font.SANS_SERIF, 3, 25);
+        Font font = new Font(Font.SANS_SERIF, Font.BOLD | Font.ITALIC, 65);
+        label.setFont(font);
+        label.setForeground(Color.WHITE);
 
         label.setText(app.getText());
 

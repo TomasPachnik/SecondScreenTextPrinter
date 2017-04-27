@@ -3,7 +3,6 @@ package sk.tomas.sstp.main;
 import sk.tomas.sstp.gui.ControlPanel;
 import sk.tomas.sstp.gui.SecondScreenFrame;
 
-import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -42,10 +41,8 @@ public class App {
         thread1.start();
         thread2.start();
 
-
-
     }
-    
+
     public ControlPanel getFrame1() {
         return frame1;
     }

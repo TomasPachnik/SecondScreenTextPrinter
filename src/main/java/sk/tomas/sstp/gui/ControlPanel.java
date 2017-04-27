@@ -26,7 +26,7 @@ public class ControlPanel extends JFrame implements Runnable {
         this.p = p;
     }
 
-    public void showFrame() {
+    private void showFrame() {
 
         JPanel panel = new JPanel();
 
