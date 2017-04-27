@@ -17,8 +17,6 @@ public class App {
 
     App() {
         this.text = "random text";
-        frame1 = new ControlPanel(this);
-        frame2 = new SecondScreenFrame(this);
     }
 
     void twoscreen() {
@@ -35,20 +33,19 @@ public class App {
             p2 = p1;
         }
 
-        ControlPanel frame1 = new ControlPanel(this);
-        SecondScreenFrame frame2 = new SecondScreenFrame(this);
+        frame1 = new ControlPanel(this, p1);
+        frame2 = new SecondScreenFrame(this, p2);
 
-        createFrameAtLocation(p1, frame1.showFrame());
-        createFrameAtLocation(p2, frame2.showFrame());
+        Thread thread1 = new Thread(frame1);
+        Thread thread2 = new Thread(frame2);
+
+        thread1.start();
+        thread2.start();
+
+
 
     }
-
-    private void createFrameAtLocation(Point p, JFrame frame) {
-        frame.setLocation(p);
-        frame.pack();
-        frame.setVisible(true);
-    }
-
+    
     public ControlPanel getFrame1() {
         return frame1;
     }
@@ -64,6 +61,5 @@ public class App {
     public void updateText(String text) {
         this.text = text;
         frame2.getLabel().setText(text);
-        System.out.println(text + " - " + frame2.getLabel().getText());
     }
 }

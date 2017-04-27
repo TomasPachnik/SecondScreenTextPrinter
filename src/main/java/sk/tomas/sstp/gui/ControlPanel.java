@@ -15,16 +15,18 @@ import java.awt.event.ActionListener;
 /**
  * Created by tomas on 4/24/17.
  */
-public class ControlPanel extends JFrame {
+public class ControlPanel extends JFrame implements Runnable {
 
     private App app;
     private JTextArea area;
+    private Point p;
 
-    public ControlPanel(App app) {
+    public ControlPanel(App app, Point p) {
         this.app = app;
+        this.p = p;
     }
 
-    public JFrame showFrame() {
+    public void showFrame() {
 
         JPanel panel = new JPanel();
 
@@ -59,7 +61,9 @@ public class ControlPanel extends JFrame {
 
         inicializeListeners();
 
-        return this;
+        setLocation(p);
+        pack();
+        setVisible(true);
     }
 
     private void inicializeListeners() {
@@ -87,4 +91,8 @@ public class ControlPanel extends JFrame {
         app.updateText(text);
     }
 
+    @Override
+    public void run() {
+        showFrame();
+    }
 }

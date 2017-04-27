@@ -8,17 +8,19 @@ import java.awt.*;
 /**
  * Created by Tomas Pachnik on 25-Apr-17.
  */
-public class SecondScreenFrame extends JFrame{
+public class SecondScreenFrame extends JFrame implements Runnable {
 
     private App app;
     private JLabel label;
+    private Point p;
 
-    public SecondScreenFrame(App app) {
+    public SecondScreenFrame(App app, Point p) {
         this.app = app;
         this.label = new JLabel();
+        this.p = p;
     }
 
-    public JFrame showFrame() {
+    public void showFrame() {
         JPanel panel = new JPanel();
 
         //remove entire titlebar
@@ -45,10 +47,17 @@ public class SecondScreenFrame extends JFrame{
 
         panel.add(label, gbc);
 
-        return this;
+        setLocation(p);
+        pack();
+        setVisible(true);
     }
 
     public JLabel getLabel() {
         return label;
+    }
+
+    @Override
+    public void run() {
+        showFrame();
     }
 }
