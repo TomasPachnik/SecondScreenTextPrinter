@@ -15,7 +15,7 @@ public class App {
     private String text;
 
     App() {
-        this.text = "random text";
+        this.text = "";
     }
 
     void twoscreen() {

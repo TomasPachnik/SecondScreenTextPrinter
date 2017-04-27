@@ -43,7 +43,7 @@ public class ControlPanel extends JFrame implements Runnable {
 
         area.setWrapStyleWord(true);
         area.setLineWrap(true);
-        area.setText("asdasd");
+        area.setText("");
 
         panel.add(area);
 
