@@ -1,5 +1,8 @@
 package sk.tomas.sstp.util;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,7 +13,7 @@ import java.util.Properties;
  */
 public class Utils {
 
-    public static Properties loadProperties(String path){
+    public static Properties loadProperties(String path) {
         Properties properties = new Properties();
         InputStream input = null;
 
@@ -19,8 +22,8 @@ public class Utils {
             properties.load(input);
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            if(input != null){
+        } finally {
+            if (input != null) {
                 try {
                     input.close();
                 } catch (IOException e) {

@@ -14,7 +14,7 @@ public class App {
     private SecondScreenFrame frame2;
     private String text;
 
-    App() {
+    public App() {
         this.text = "";
     }
 
