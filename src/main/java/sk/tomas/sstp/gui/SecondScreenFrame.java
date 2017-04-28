@@ -39,7 +39,7 @@ public class SecondScreenFrame extends JFrame implements Runnable {
         panel.setBackground(Color.BLACK);
         setContentPane(panel);
 
-        jTextArea = new JTextArea();
+        jTextArea = setUpArea();
 
         //center JTextArea
         panel.setLayout(new GridBagLayout());
@@ -47,8 +47,15 @@ public class SecondScreenFrame extends JFrame implements Runnable {
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        Font font = new Font(Font.SANS_SERIF, Font.BOLD | Font.ITALIC, propertyBundle.getFontsize());
-        jTextArea.setFont(font);
+        panel.add(jTextArea, gbc);
+
+        setLocation(p);
+        pack();
+        setVisible(true);
+    }
+
+    private JTextArea setUpArea() {
+        JTextArea jTextArea = new JTextArea();
 
         if (!propertyBundle.invertColors()) {
             jTextArea.setBackground(Color.BLACK);
@@ -56,22 +63,17 @@ public class SecondScreenFrame extends JFrame implements Runnable {
         } else {
             jTextArea.setBackground(Color.WHITE);
             jTextArea.setForeground(Color.BLACK);
-
         }
+
+        Font font = new Font(Font.SANS_SERIF, Font.BOLD | Font.ITALIC, propertyBundle.getFontsize());
+        jTextArea.setFont(font);
 
         jTextArea.setLineWrap(true);
         jTextArea.setWrapStyleWord(true);
-
         jTextArea.setColumns(propertyBundle.getColumns());
         jTextArea.setRows(propertyBundle.getRows());
-
         jTextArea.setText(app.getText());
-
-        panel.add(jTextArea, gbc);
-
-        setLocation(p);
-        pack();
-        setVisible(true);
+        return jTextArea;
     }
 
     public JTextArea getJTextArea() {
