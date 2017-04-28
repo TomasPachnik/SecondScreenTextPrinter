@@ -1,5 +1,6 @@
 package sk.tomas.sstp.gui;
 
+import sk.tomas.servant.annotation.Autowired;
 import sk.tomas.sstp.main.App;
 
 import javax.swing.*;
@@ -17,12 +18,13 @@ import java.awt.event.ActionListener;
  */
 public class ControlPanel extends JFrame implements Runnable {
 
+    @Autowired
     private App app;
+
     private JTextArea area;
     private Point p;
 
-    public ControlPanel(App app, Point p) {
-        this.app = app;
+    public void setP(Point p) {
         this.p = p;
     }
 

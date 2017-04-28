@@ -21,7 +21,7 @@ public class Main {
 
         Core core = new CoreImpl(Configuration.class);
 
-        ((App) core.getByName("app")).twoscreen();
+        ((App) core.getByName("app")).initialize();
 
     }
 

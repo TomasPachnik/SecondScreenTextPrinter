@@ -1,5 +1,6 @@
 package sk.tomas.sstp.main;
 
+import sk.tomas.servant.annotation.Autowired;
 import sk.tomas.sstp.gui.ControlPanel;
 import sk.tomas.sstp.gui.SecondScreenFrame;
 
@@ -10,15 +11,17 @@ import java.awt.*;
  */
 public class App {
 
-    private ControlPanel frame1;
-    private SecondScreenFrame frame2;
+    @Autowired
+    private ControlPanel controlPanel;
+    @Autowired
+    private SecondScreenFrame secondScreenFrame;
     private String text;
 
     public App() {
         this.text = "";
     }
 
-    void twoscreen() {
+    void initialize() {
         Point p1 = null;
         Point p2 = null;
         for (GraphicsDevice gd : GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()) {
@@ -32,23 +35,15 @@ public class App {
             p2 = p1;
         }
 
-        frame1 = new ControlPanel(this, p1);
-        frame2 = new SecondScreenFrame(this, p2);
+        controlPanel.setP(p1);
+        secondScreenFrame.setP(p2);
 
-        Thread thread1 = new Thread(frame1);
-        Thread thread2 = new Thread(frame2);
+        Thread thread1 = new Thread(controlPanel);
+        Thread thread2 = new Thread(secondScreenFrame);
 
         thread1.start();
         thread2.start();
 
-    }
-
-    public ControlPanel getFrame1() {
-        return frame1;
-    }
-
-    public SecondScreenFrame getFrame2() {
-        return frame2;
     }
 
     public String getText() {
@@ -57,6 +52,6 @@ public class App {
 
     public void updateText(String text) {
         this.text = text;
-        frame2.getJTextArea().setText(text);
+        secondScreenFrame.getJTextArea().setText(text);
     }
 }

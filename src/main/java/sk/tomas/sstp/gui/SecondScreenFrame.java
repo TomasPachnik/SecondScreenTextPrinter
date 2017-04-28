@@ -1,5 +1,6 @@
 package sk.tomas.sstp.gui;
 
+import sk.tomas.servant.annotation.Autowired;
 import sk.tomas.sstp.main.App;
 
 import javax.swing.*;
@@ -10,13 +11,13 @@ import java.awt.*;
  */
 public class SecondScreenFrame extends JFrame implements Runnable {
 
+    @Autowired
     private App app;
+
     private JTextArea jTextArea;
     private Point p;
 
-    public SecondScreenFrame(App app, Point p) {
-        this.app = app;
-        this.jTextArea = new JTextArea();
+    public void setP(Point p) {
         this.p = p;
     }
 
@@ -35,7 +36,9 @@ public class SecondScreenFrame extends JFrame implements Runnable {
         panel.setBackground(Color.BLACK);
         setContentPane(panel);
 
-        //center JLabel
+        jTextArea = new JTextArea();
+
+        //center JTextArea
         panel.setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridwidth = GridBagConstraints.REMAINDER;
