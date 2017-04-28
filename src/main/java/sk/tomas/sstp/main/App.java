@@ -15,6 +15,7 @@ public class App {
     private ControlPanel controlPanel;
     @Autowired
     private SecondScreenFrame secondScreenFrame;
+
     private String text;
 
     public App() {

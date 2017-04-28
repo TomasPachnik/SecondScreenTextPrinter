@@ -1,6 +1,7 @@
 package sk.tomas.sstp.gui;
 
 import sk.tomas.servant.annotation.Autowired;
+import sk.tomas.sstp.configuration.PropertyBundle;
 import sk.tomas.sstp.main.App;
 
 import javax.swing.*;
@@ -13,6 +14,8 @@ public class SecondScreenFrame extends JFrame implements Runnable {
 
     @Autowired
     private App app;
+    @Autowired
+    private PropertyBundle propertyBundle;
 
     private JTextArea jTextArea;
     private Point p;
@@ -44,16 +47,23 @@ public class SecondScreenFrame extends JFrame implements Runnable {
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         gbc.fill = GridBagConstraints.HORIZONTAL;
 
-        Font font = new Font(Font.SANS_SERIF, Font.BOLD | Font.ITALIC, 65);
+        Font font = new Font(Font.SANS_SERIF, Font.BOLD | Font.ITALIC, propertyBundle.getFontsize());
         jTextArea.setFont(font);
-        jTextArea.setBackground(Color.BLACK);
-        jTextArea.setForeground(Color.WHITE);
+
+        if (!propertyBundle.invertColors()) {
+            jTextArea.setBackground(Color.BLACK);
+            jTextArea.setForeground(Color.WHITE);
+        } else {
+            jTextArea.setBackground(Color.WHITE);
+            jTextArea.setForeground(Color.BLACK);
+
+        }
 
         jTextArea.setLineWrap(true);
         jTextArea.setWrapStyleWord(true);
 
-        jTextArea.setColumns(20);
-        jTextArea.setRows(5);
+        jTextArea.setColumns(propertyBundle.getColumns());
+        jTextArea.setRows(propertyBundle.getRows());
 
         jTextArea.setText(app.getText());
 

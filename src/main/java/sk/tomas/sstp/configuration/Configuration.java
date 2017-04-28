@@ -6,6 +6,8 @@ import sk.tomas.sstp.gui.ControlPanel;
 import sk.tomas.sstp.gui.SecondScreenFrame;
 import sk.tomas.sstp.main.App;
 
+import java.io.IOException;
+
 /**
  * Created by Tomas Pachnik on 27-Apr-17.
  */
@@ -26,6 +28,11 @@ public class Configuration {
     @Bean
     public SecondScreenFrame secondScreenFrame() {
         return new SecondScreenFrame();
+    }
+
+    @Bean
+    public PropertyBundle propertyBundle() {
+        return new PropertyBundle("config.properties");
     }
 
 }

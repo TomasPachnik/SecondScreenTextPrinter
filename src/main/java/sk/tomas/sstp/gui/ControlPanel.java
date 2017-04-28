@@ -49,12 +49,6 @@ public class ControlPanel extends JFrame implements Runnable {
 
         panel.add(area);
 
-        JButton button = new JButton();
-
-        button.setText("bla bla bla");
-
-        panel.add(button);
-
         int CANVAS_HEIGHT = 480;
         int CANVAS_WIDTH = 640;
         setPreferredSize(new Dimension(CANVAS_WIDTH, CANVAS_HEIGHT));
