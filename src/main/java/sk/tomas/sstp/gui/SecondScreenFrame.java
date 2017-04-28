@@ -16,13 +16,11 @@ public class SecondScreenFrame extends JFrame implements Runnable {
     private App app;
     @Autowired
     private PropertyBundle propertyBundle;
+    @Autowired
+    private Point p2;
 
     private JTextArea jTextArea;
-    private Point p;
 
-    public void setP(Point p) {
-        this.p = p;
-    }
 
     private void showFrame() {
         JPanel panel = new JPanel();
@@ -49,7 +47,7 @@ public class SecondScreenFrame extends JFrame implements Runnable {
 
         panel.add(jTextArea, gbc);
 
-        setLocation(p);
+        setLocation(p2);
         pack();
         setVisible(true);
     }

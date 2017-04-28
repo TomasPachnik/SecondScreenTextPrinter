@@ -15,13 +15,11 @@ public class ControlPanel extends JFrame implements Runnable {
 
     @Autowired
     private App app;
+    @Autowired
+    private Point p1;
 
     private JTextArea jTextArea;
-    private Point p;
 
-    public void setP(Point p) {
-        this.p = p;
-    }
 
     private void showFrame() {
 
@@ -44,7 +42,7 @@ public class ControlPanel extends JFrame implements Runnable {
 
         inicializeListeners();
 
-        setLocation(p);
+        setLocation(p1);
         pack();
         setVisible(true);
     }

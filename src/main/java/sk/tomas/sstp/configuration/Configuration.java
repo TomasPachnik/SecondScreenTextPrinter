@@ -6,6 +6,7 @@ import sk.tomas.sstp.gui.ControlPanel;
 import sk.tomas.sstp.gui.SecondScreenFrame;
 import sk.tomas.sstp.main.App;
 
+import java.awt.*;
 import java.io.IOException;
 
 /**
@@ -33,6 +34,18 @@ public class Configuration {
     @Bean
     public PropertyBundle propertyBundle() {
         return new PropertyBundle("config.properties");
+    }
+
+    @Bean
+    public Point p1() {
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[0];
+        return gd.getDefaultConfiguration().getBounds().getLocation();
+    }
+
+    @Bean
+    public Point p2() {
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[1];
+        return gd.getDefaultConfiguration().getBounds().getLocation();
     }
 
 }
