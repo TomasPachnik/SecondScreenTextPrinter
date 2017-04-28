@@ -43,7 +43,9 @@ public class PropertyBundle {
         try {
             return Integer.parseInt(properties.getProperty(key));
         } catch (NumberFormatException e) {
-            logger.error("Error parsing " + key + ", value is: " + properties.getProperty(key), e);
+            String message = "Error parsing " + key + ", value is: " + properties.getProperty(key);
+            logger.error(message, e);
+            Utils.showErrorAndExit(MessagesEnum.CONFIGURATION_ERROR.getText() + "\n" + message);
         }
         return -1;
     }

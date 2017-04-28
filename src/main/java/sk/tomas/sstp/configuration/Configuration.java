@@ -6,10 +6,9 @@ import sk.tomas.servant.annotation.Config;
 import sk.tomas.sstp.gui.ControlPanel;
 import sk.tomas.sstp.gui.SecondScreenFrame;
 import sk.tomas.sstp.main.App;
+import sk.tomas.sstp.util.Utils;
 
 import java.awt.*;
-import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * Created by Tomas Pachnik on 27-Apr-17.
@@ -43,7 +42,6 @@ public class Configuration {
     @Bean
     public Point p1() {
         return getPoint(0);
-
     }
 
     @Bean
@@ -56,7 +54,12 @@ public class Configuration {
         try {
             gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices()[screenNumber];
         } catch (ArrayIndexOutOfBoundsException e) {
-            logger.error("Screen with number " + screenNumber + " not found!", e);
+
+            String message = "Screen with number " + screenNumber + " not found!";
+            logger.error(message, e);
+            if (screenNumber == 1) {
+                Utils.showErrorAndExit(MessagesEnum.SECOND_SCREEN_NOT_FOUND.getText());
+            }
         }
         return gd != null ? gd.getDefaultConfiguration().getBounds().getLocation() : null;
     }

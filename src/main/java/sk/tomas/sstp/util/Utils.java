@@ -1,5 +1,6 @@
 package sk.tomas.sstp.util;
 
+import javax.swing.*;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,6 +18,11 @@ public class Utils {
         properties.load(input);
         input.close();
         return properties;
+    }
+
+    public static void showErrorAndExit(String text) {
+        JOptionPane.showMessageDialog(new JFrame(), text + "\nProgram bude ukonceny.", "Error", JOptionPane.ERROR_MESSAGE);
+        System.exit(0);
     }
 
 }
