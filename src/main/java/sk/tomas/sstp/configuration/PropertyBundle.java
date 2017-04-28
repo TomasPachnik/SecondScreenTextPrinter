@@ -1,5 +1,6 @@
 package sk.tomas.sstp.configuration;
 
+import org.apache.log4j.Logger;
 import sk.tomas.sstp.util.Utils;
 
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.util.Properties;
  */
 
 public class PropertyBundle {
+    private final static Logger logger = Logger.getLogger(PropertyBundle.class);
 
     private Properties properties;
 
@@ -22,19 +24,28 @@ public class PropertyBundle {
     }
 
     public int getFontsize() {
-        return Integer.parseInt(properties.getProperty(PropertyEnum.FONT_SIZE.getName()));
+        return getInt(PropertyEnum.FONT_SIZE.getName());
     }
 
     public int getColumns() {
-        return Integer.parseInt(properties.getProperty(PropertyEnum.COLUMNS.getName()));
+        return getInt(PropertyEnum.COLUMNS.getName());
     }
 
     public int getRows() {
-        return Integer.parseInt(properties.getProperty(PropertyEnum.ROWS.getName()));
+        return getInt(PropertyEnum.ROWS.getName());
     }
 
     public boolean invertColors() {
-        return Boolean.parseBoolean(properties.getProperty(PropertyEnum.INVERT_COLORS.getName()));
+        return Boolean.parseBoolean(PropertyEnum.INVERT_COLORS.getName());
+    }
+
+    private int getInt(String key) {
+        try {
+            return Integer.parseInt(properties.getProperty(key));
+        } catch (NumberFormatException e) {
+            logger.error("Error parsing " + key + ", value is: " + properties.getProperty(key), e);
+        }
+        return -1;
     }
 
 }

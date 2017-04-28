@@ -1,17 +1,22 @@
 package sk.tomas.sstp.gui;
 
+import org.apache.log4j.Logger;
 import sk.tomas.servant.annotation.Autowired;
+import sk.tomas.sstp.configuration.PropertyBundle;
 import sk.tomas.sstp.main.App;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * Created by tomas on 4/24/17.
  */
 public class ControlPanel extends JFrame implements Runnable {
+    private final static Logger logger = Logger.getLogger(ControlPanel.class);
 
     @Autowired
     private App app;
@@ -19,7 +24,6 @@ public class ControlPanel extends JFrame implements Runnable {
     private Point p1;
 
     private JTextArea jTextArea;
-
 
     private void showFrame() {
 
@@ -77,6 +81,13 @@ public class ControlPanel extends JFrame implements Runnable {
                 }
             });
         }
+
+        addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                logger.info("App stopped");
+                System.exit(0);
+            }
+        });
     }
 
     private void updateText(String text) {
