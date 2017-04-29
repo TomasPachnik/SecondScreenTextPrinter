@@ -36,7 +36,7 @@ public class PropertyBundle {
     }
 
     public boolean invertColors() {
-        return Boolean.parseBoolean(PropertyEnum.INVERT_COLORS.getName());
+        return Boolean.parseBoolean(properties.getProperty(PropertyEnum.INVERT_COLORS.getName()));
     }
 
     private int getInt(String key) {
