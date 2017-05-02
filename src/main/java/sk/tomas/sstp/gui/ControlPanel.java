@@ -1,8 +1,7 @@
 package sk.tomas.sstp.gui;
 
 import org.apache.log4j.Logger;
-import sk.tomas.servant.annotation.Autowired;
-import sk.tomas.sstp.configuration.PropertyBundle;
+import sk.tomas.servant.annotation.Inject;
 import sk.tomas.sstp.main.App;
 
 import javax.swing.*;
@@ -18,9 +17,9 @@ import java.awt.event.WindowEvent;
 public class ControlPanel extends JFrame implements Runnable {
     private final static Logger logger = Logger.getLogger(ControlPanel.class);
 
-    @Autowired
+    @Inject
     private App app;
-    @Autowired
+    @Inject
     private Point p1;
 
     private JTextArea jTextArea;

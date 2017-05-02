@@ -1,6 +1,6 @@
 package sk.tomas.sstp.main;
 
-import sk.tomas.servant.annotation.Autowired;
+import sk.tomas.servant.annotation.Inject;
 import sk.tomas.sstp.gui.ControlPanel;
 import sk.tomas.sstp.gui.SecondScreenFrame;
 
@@ -9,9 +9,9 @@ import sk.tomas.sstp.gui.SecondScreenFrame;
  */
 public class App {
 
-    @Autowired
+    @Inject
     private ControlPanel controlPanel;
-    @Autowired
+    @Inject
     private SecondScreenFrame secondScreenFrame;
 
     private String text;

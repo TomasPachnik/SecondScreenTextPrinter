@@ -1,6 +1,6 @@
 package sk.tomas.sstp.gui;
 
-import sk.tomas.servant.annotation.Autowired;
+import sk.tomas.servant.annotation.Inject;
 import sk.tomas.sstp.configuration.PropertyBundle;
 import sk.tomas.sstp.main.App;
 
@@ -12,11 +12,11 @@ import java.awt.*;
  */
 public class SecondScreenFrame extends JFrame implements Runnable {
 
-    @Autowired
+    @Inject
     private App app;
-    @Autowired
+    @Inject
     private PropertyBundle propertyBundle;
-    @Autowired
+    @Inject
     private Point p2;
 
     private JTextArea jTextArea;
