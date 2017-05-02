@@ -57,7 +57,7 @@ public class SecondScreenFrame extends JFrame implements Runnable {
 
         if (!propertyBundle.invertColors()) {
             jTextArea.setBackground(Color.BLACK);
-            jTextArea.setForeground(Color.WHITE);
+            jTextArea.setForeground(Color.RED);
         } else {
             jTextArea.setBackground(Color.WHITE);
             jTextArea.setForeground(Color.BLACK);
